@@ -1,0 +1,22 @@
+<template>
+	<view>
+		<uni-badge text="444" type="primary"></uni-badge>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+
+</style>

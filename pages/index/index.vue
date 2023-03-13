@@ -5,6 +5,8 @@
 			组件。光标置于组件名称处按F1，即可查看组件文档。</view>
 		<text class="intro">详见：</text>
 		<uni-link :href="href" :text="href"></uni-link>
+		<button type="default" class="btn">333</button>
+		<uni-badge text="22" type="primary"></uni-badge>
 	</view>
 </template>
 
@@ -22,6 +24,10 @@
 </script>
 
 <style>
+	.btn {
+		background-color: #6ff;
+		/* border-radius: 20px; */
+	}
 	.container {
 		padding: 20px;
 		font-size: 14px;
