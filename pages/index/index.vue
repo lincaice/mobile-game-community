@@ -6,7 +6,7 @@
 		<text class="intro">详见：</text>
 		<uni-link :href="href" :text="href"></uni-link>
 		<button type="default" class="btn">333</button>
-		<uni-badge text="22" type="primary"></uni-badge>
+		<uni-badge text="22" type="primary"></uni-badge>		
 	</view>
 </template>
 

@@ -9,32 +9,55 @@
 		"style": {
 			"navigationBarTitleText": "uni-app"
 		}
+	}, {
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/game/game",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff",
 		"app-plus": {
-			"background": "#efeff4"
+			"background": "#ffffff"
 		}
 	},
 	"tabBar": {
 		"color": "#7A7E83",
-		"selectedColor": "#3cc51f",
+		"selectedColor": "#000",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
 		"list": [{
 			"pagePath": "pages/index/index",
-			"iconPath": "static/c1.png",
-			// "selectedIconPath": "static/image/icon_component_HL.png",
-			"text": "组件"
+			"iconPath": "static/tabbar/info.png",
+			"selectedIconPath": "static/tabbar/info_active.png",
+			"text": "资讯"
 		}, {
 			"pagePath": "pages/a/a",
-			"iconPath": "static/c2.png",
-			// "iconPath": "static/image/icon_API.png",
-			// "selectedIconPath": "static/image/icon_API_HL.png",
-			"text": "接口"
+			"iconPath": "static/tabbar/friend.png",
+			"selectedIconPath": "static/tabbar/friend_active.png",
+			"text": "好友"
+		}, {
+			"pagePath": "pages/game/game",
+			"iconPath": "static/tabbar/game.png",
+			"selectedIconPath": "static/tabbar/game_active.png",
+			"text": "游戏"
+		}, {
+			"pagePath": "pages/login/login",
+			"iconPath": "static/tabbar/personal.png",
+			"selectedIconPath": "static/tabbar/personal_active.png",
+			"text": "我的"
 		}]
 	}
 }

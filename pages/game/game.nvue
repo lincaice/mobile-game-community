@@ -1,8 +1,7 @@
 <template>
 	<view>
-		<uni-badge text="444" type="primary"></uni-badge>
-		
-		<uni-search-bar placeholder="自定义背景色" bgColor="#EEEEEE"/>
+		<text>我是game</text>
+		<uni-easyinput class="test" :inputBorder="false" placeholder="请输入姓名"></uni-easyinput>
 	</view>
 </template>
 
