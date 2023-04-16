@@ -23,7 +23,16 @@
 			"enablePullDownRefresh": false
 		}
 
-	}],
+	}    ,{
+            "path" : "pages/kkk/kkk",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -49,7 +58,7 @@
 			"selectedIconPath": "static/tabbar/friend_active.png",
 			"text": "好友"
 		}, {
-			"pagePath": "pages/game/game",
+			"pagePath": "pages/kkk/kkk",
 			"iconPath": "static/tabbar/game.png",
 			"selectedIconPath": "static/tabbar/game_active.png",
 			"text": "游戏"

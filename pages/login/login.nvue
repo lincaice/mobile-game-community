@@ -1,24 +1,29 @@
 <template>
 	<view>
-		<view class="login_form_box">
-			<text>登 录</text>
-			<text class="tips">请输入用户名,密码用于获取更多服务</text>
-			<view class="bgtest">
-
+		<view class="login-page">
+			<text class="login-page__title">登 录</text>
+			<view class="login-page__tips">
+				<text class="login-page__tips--base">请输入用户名,密码用于获取更多服务</text>	
 			</view>
-			<u--input class='form_item input' placeholder="请输入内容" border='none'></u--input>
-			<u--input class='form_item input' placeholder="请输入内容" border='surround'></u--input>
-			<view class="abc123_outer">
-				<u--input type='number' class='abc123' placeholder="请输入用户名" border='none'></u--input>
-			</view>
+			<mg-input class="login-page__input" placeholder="请输入用户名"></mg-input>
+			<mg-input class="login-page__input" placeholder="请输入密码" type="password"></mg-input>
 			<u-button class='form_item' type="primary" text="登录"></u-button>
-			<u-radio :label="123" :name="123" size='14'><text class="tips">登录即代表您同意<<用户协议>>，<<隐私政策>></text></u-radio>
+			<u-radio :label="123" :name="123" size='14'>
+				<view class="login-page__tips">
+					<text class="login-page__tips--base">登录即代表您同意</text>			
+					<text class="login-page__tips--primary">《用户协议》</text>
+					<text class="login-page__tips--base">、</text>				
+					<text class="login-page__tips--primary">《隐私政策》</text>				
+				</view>
+			</u-radio>
 		</view>
 	</view>
 </template>
 
 <script>
+	import mgInput from '@/components/base/mg-input.nvue'
 	export default {
+		components: {mgInput},
 		data() {
 			return {
 
@@ -31,8 +36,30 @@
 </script>
 
 <style scoped lang="scss">
-	/deep/ .input-placeholder {
-		color: red;
+
+
+	.login-page {
+		padding: 0 40rpx;
+		&__title {
+			font-size: 22px;
+			font-weight: 500;
+		}
+		
+		&__tips {
+			padding: 10px 0;
+			flex-direction: row;
+			&--base {
+				color: #909399;
+				font-size: 14px;
+			}
+			&--primary {
+				font-size: 14px;
+			}
+		}
+		
+		&__input {
+			margin: 8px 0;
+		}
 	}
 
 	.tips {
@@ -58,31 +85,5 @@
 		border-radius: 8px;
 	}
 
-	.login_form_box {
-		padding: 0 40rpx;
 
-		.uni-input {
-			background-color: #eee;
-			border-radius: 8px;
-
-		}
-
-		.test {
-			height: 100px;
-			border: 4px solid gray;
-			border-radius: 10px;
-			color: aqua;
-			background-color: green;
-		}
-	}
-.abc123_outer{
-	background-color: rgba(150, 150, 150, .1);
-	border-radius: 8px;
-	
-	.abc123 {
-		margin:0 10px;
-		height: 50px;
-		font-size: 20px;
-	}
-}
 </style>
