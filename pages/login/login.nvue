@@ -3,17 +3,17 @@
 		<view class="login-page">
 			<text class="login-page__title">登 录</text>
 			<view class="login-page__tips">
-				<text class="login-page__tips--base">请输入用户名,密码用于获取更多服务</text>	
+				<text class="login-page__tips--base">请输入用户名,密码用于获取更多服务</text>
 			</view>
 			<mg-input class="login-page__input" placeholder="请输入用户名"></mg-input>
 			<mg-input class="login-page__input" placeholder="请输入密码" type="password"></mg-input>
 			<u-button class='form_item' type="primary" text="登录"></u-button>
 			<u-radio :label="123" :name="123" size='14'>
 				<view class="login-page__tips">
-					<text class="login-page__tips--base">登录即代表您同意</text>			
+					<text class="login-page__tips--base">登录即代表您同意</text>
 					<text class="login-page__tips--primary">《用户协议》</text>
-					<text class="login-page__tips--base">、</text>				
-					<text class="login-page__tips--primary">《隐私政策》</text>				
+					<text class="login-page__tips--base">、</text>
+					<text class="login-page__tips--primary">《隐私政策》</text>
 				</view>
 			</u-radio>
 		</view>
@@ -23,7 +23,9 @@
 <script>
 	import mgInput from '@/components/base/mg-input.nvue'
 	export default {
-		components: {mgInput},
+		components: {
+			mgInput
+		},
 		data() {
 			return {
 
@@ -31,32 +33,34 @@
 		},
 		methods: {
 
-		}
+		},
+
 	}
 </script>
 
 <style scoped lang="scss">
-
-
 	.login-page {
 		padding: 0 40rpx;
+
 		&__title {
 			font-size: 22px;
 			font-weight: 500;
 		}
-		
+
 		&__tips {
 			padding: 10px 0;
 			flex-direction: row;
+
 			&--base {
 				color: #909399;
 				font-size: 14px;
 			}
+
 			&--primary {
 				font-size: 14px;
 			}
 		}
-		
+
 		&__input {
 			margin: 8px 0;
 		}
@@ -84,6 +88,4 @@
 		height: 50px;
 		border-radius: 8px;
 	}
-
-
 </style>

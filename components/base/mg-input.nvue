@@ -1,13 +1,20 @@
 <template>
 	<view class="mg-input">
-		<u--input class='mg-input__main' :type='type' :placeholder="placeholder" border='none' fontSize="16px"></u--input>
+		<u--input class='mg-input__main' :type='type' v-model="inputValue" :placeholder="placeholder" border='none'
+			fontSize="16px">
+
+		</u--input>
 	</view>
 </template>
 
 <script>
 	export default {
-		props:{
-			placeholder:{
+		props: {
+			value: {
+				type: String,
+
+			},
+			placeholder: {
 				type: String,
 				default: '请输入'
 			},
@@ -17,18 +24,28 @@
 					return ['number', 'text', 'password'].includes(value)
 				}
 			}
+		},
+		computed: {
+			inputValue: {
+				get() {
+					return this.value
+				},
+				set(val) {
+					this.$emit('input', val)
+				}
+			}
 		}
 	}
 </script>
 
 <style scoped lang="scss">
-.mg-input{
-	height: 42px;
-	background-color: rgba(150, 150, 150, .1);
-	border-radius: 4px;
-	
-	&__main {
-		margin:0 20rpx;
+	.mg-input {
+		height: 42px;
+		background-color: rgba(150, 150, 150, .1);
+		border-radius: 4px;
+
+		&__main {
+			margin: 0 20rpx;
+		}
 	}
-}
 </style>
