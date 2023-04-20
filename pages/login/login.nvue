@@ -87,7 +87,7 @@
 			flex-direction: row;
 
 			&--base {
-				color: #909399;
+				color: $u-tips-color;
 				font-size: 14px;
 			}
 
