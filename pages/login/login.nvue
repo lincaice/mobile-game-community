@@ -23,11 +23,19 @@
 				</u-checkbox-group>
 			</uni-transition>
 		</view>
+		<u-modal :show="modalData.show" :title="modalData.title" @confirm="modalData.show=false">
+			<view style="width: 570rpx;">
+				<text class="login-page__modal-text">
+					{{modalData.content}}
+				</text>
+			</view>
+		</u-modal>
 	</view>
 </template>
 
 <script>
 	import { shakeX } from '@/utils/animate.js'
+	import { appLogin } from '@/api/user.js'
 	import mgInput from '@/components/base/mg-input.nvue'
 	export default {
 		components: {
@@ -40,16 +48,21 @@
 					userId: '',
 					password: ''
 				},
-				agreeVal: []
+				agreeVal: [],
+				modalData: {
+					show: false,
+					title: '登录失败',
+					content: ''
+				}
 			}
 		},
 		watch: {
 			loginData: {
 				deep: true,
 				handler(newData) {
-					if(/abc/ig.test(newData.userId)){
+					if (/^\w{6,16}$/g.test(newData.userId) && /^[\w!@#$%^&*+-=]{6,18}$/g.test(newData.password)) {
 						this.submitDisabled = false
-					}else {
+					} else {
 						this.submitDisabled = true
 					}
 				}
@@ -61,13 +74,40 @@
 			/**
 			 * 登录按钮事件
 			 */
-			loginHandler() {
+			async loginHandler() {
 				if (this.agreeVal.length === 0) {
 					shakeX(this.$refs.agreeAni)
 					return
 				}
-
+				uni.showLoading({
+					title: '登录中'
+				});
+				let preTime = new Date()
+				const res = await appLogin(this.loginData)
+				console.log(res);
+				let reqTime = preTime - new Date()
+				if (reqTime >= 1000) {
+					uni.hideLoading();
+					this.loginProcess(res);
+				} else {
+					setTimeout(() => {
+						uni.hideLoading();
+						this.loginProcess(res);
+					}, 1000 - reqTime)
+				}
 			},
+			/**
+			 * 获取数据后的操作
+			 * @param {Object} res 登录接口返回的数据
+			 */
+			loginProcess(res) {
+				if (res.code === 200) {
+					console.log('登录成功');
+				} else {
+					this.modalData.content = res.msg;
+					this.modalData.show = true;
+				}
+			}
 		},
 
 	}
@@ -101,6 +141,10 @@
 		}
 	}
 
+	.login-page__modal-text {
+		font-size: 15px;
+		color: #606266;
+	}
 
 	.form_item {
 		margin: 10px 0;
