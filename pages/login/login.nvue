@@ -30,6 +30,11 @@
 				</text>
 			</view>
 		</u-modal>
+		
+		<view class="login-page__footer">
+			<text class="login-page__tips--base">暂无账号,点击前往</text>
+			<u--text type="primary" text="注册"></u--text>
+		</view>
 	</view>
 </template>
 

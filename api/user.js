@@ -16,3 +16,23 @@ export function appLogin(data) {
 		data
 	})
 }
+
+
+/**
+ @typedef registerData
+ @type {Object}
+ @property {string} userId 用户的Id
+ @property {string} password 密码
+ @property {string} validPsw 密码
+ */
+
+/**
+ * @param {registerData} data 用户注册基本信息
+ */
+export function appRegister(data) {
+	return request({
+		url: '/api/user/register',
+		method: 'POST',
+		data
+	})
+}

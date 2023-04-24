@@ -1,0 +1,121 @@
+<template>
+	<view>
+		<view class="register-page">
+			<text class="register-page__title">注册</text>
+			<view class="register-page__tips">
+				<text class="register-page__tips--base">请注册一个账号用于获取更多服务</text>
+			</view>
+			<mg-input class="register-page__input" placeholder="请输入用户名" v-model="registerData.userId"></mg-input>
+			<mg-input class="register-page__input" placeholder="请输入密码" type="password" v-model="registerData.password">
+			</mg-input>
+			<mg-input class="register-page__input" placeholder="请再次密码" type="password" v-model="registerData.validPsw">
+			</mg-input>
+
+			<u-button class='form_item' type="primary" text="注册" @click="registerHandler" :disabled="submitDisabled">
+			</u-button>
+			<uni-transition ref="agreeAni" :show="true">
+				<u-checkbox-group v-model="agreeVal">
+					<u-checkbox name='sel' size='14'>
+					</u-checkbox>
+					<view class="register-page__tips">
+						<text class="register-page__tips--base">注册即代表您同意</text>
+						<text class="register-page__tips--primary">《用户协议》</text>
+						<text class="register-page__tips--base">、</text>
+						<text class="register-page__tips--primary">《隐私政策》</text>
+					</view>
+				</u-checkbox-group>
+			</uni-transition>
+		</view>
+		<u-modal :show="modalData.show" :title="modalData.title" @confirm="modalData.show=false">
+			<view style="width: 570rpx;">
+				<text class="register-page__modal-text">
+					{{modalData.content}}
+				</text>
+			</view>
+		</u-modal>
+	</view>
+</template>
+
+<script>
+	import { shakeX } from '@/utils/animate.js'
+	import { appRegister } from '@/api/user.js'
+	import mgInput from '@/components/base/mg-input.nvue'
+	export default {
+		components: {
+			mgInput
+		},
+		data() {
+			return {
+				submitDisabled: true,
+				registerData: {
+					userId: '',
+					password: '',
+					validPsw: ''
+				},
+				agreeVal: [],
+				modalData: {
+					show: false,
+					title: '注册失败',
+					content: ''
+				}
+			}
+		},
+		watch: {
+			loginData: {
+				deep: true,
+				handler(newData) {
+					if (/^\w{6,16}$/g.test(newData.userId) && /^[\w!@#$%^&*+-=]{6,18}$/g.test(newData.password)) {
+						this.submitDisabled = false
+					} else {
+						this.submitDisabled = true
+					}
+				}
+
+			}
+		},
+		mounted() {},
+		methods: {
+			/**
+			 * 注册按钮事件
+			 */
+			async registerHandler() {
+				if (this.agreeVal.length === 0) {
+					shakeX(this.$refs.agreeAni)
+					return
+				}
+				uni.showLoading({
+					title: '注册中'
+				});
+				let preTime = new Date()
+				const res = await appRegister(this.loginData)
+				console.log(res);
+				let reqTime = preTime - new Date()
+				if (reqTime >= 1000) {
+					uni.hideLoading();
+					this.loginProcess(res);
+				} else {
+					setTimeout(() => {
+						uni.hideLoading();
+						this.loginProcess(res);
+					}, 1000 - reqTime)
+				}
+			},
+			/**
+			 * 获取数据后的操作
+			 * @param {Object} res 注册接口返回的数据
+			 */
+			loginProcess(res) {
+				this.modalData.content = res.msg;
+				this.modalData.show = true;
+				if (res.code === 200) {
+					// 跳转到登录界面
+				}
+			}
+		},
+
+	}
+</script>
+
+<style>
+
+</style>
