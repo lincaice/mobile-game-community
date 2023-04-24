@@ -1,0 +1,26 @@
+<template>
+	<view>
+		<u-button type="primary" text="确定" @click="goLogin"></u-button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			goLogin() {
+				uni.navigateTo({
+					url: '/pages/login/login'
+				})
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

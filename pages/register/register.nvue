@@ -11,7 +11,8 @@
 			<mg-input class="register-page__input" placeholder="请再次密码" type="password" v-model="registerData.validPsw">
 			</mg-input>
 
-			<u-button class='form_item' type="primary" text="注册" @click="registerHandler" :disabled="submitDisabled">
+			<u-button class='register-page__button' type="primary" text="注册" @click="registerHandler"
+				:disabled="submitDisabled">
 			</u-button>
 			<uni-transition ref="agreeAni" :show="true">
 				<u-checkbox-group v-model="agreeVal">
@@ -26,7 +27,7 @@
 				</u-checkbox-group>
 			</uni-transition>
 		</view>
-		<u-modal :show="modalData.show" :title="modalData.title" @confirm="modalData.show=false">
+		<u-modal :show="modalData.show" :title="modalData.title" @confirm="modalConfirm()">
 			<view style="width: 570rpx;">
 				<text class="register-page__modal-text">
 					{{modalData.content}}
@@ -56,15 +57,17 @@
 				modalData: {
 					show: false,
 					title: '注册失败',
-					content: ''
+					content: '',
+					redirect: false
 				}
 			}
 		},
 		watch: {
-			loginData: {
+			registerData: {
 				deep: true,
 				handler(newData) {
-					if (/^\w{6,16}$/g.test(newData.userId) && /^[\w!@#$%^&*+-=]{6,18}$/g.test(newData.password)) {
+					if (/^\w{6,16}$/g.test(newData.userId) && /^[\w!@#$%^&*+-=]{6,18}$/g.test(newData.password) &&
+						newData.password === newData.validPsw) {
 						this.submitDisabled = false
 					} else {
 						this.submitDisabled = true
@@ -87,7 +90,7 @@
 					title: '注册中'
 				});
 				let preTime = new Date()
-				const res = await appRegister(this.loginData)
+				const res = await appRegister(this.registerData)
 				console.log(res);
 				let reqTime = preTime - new Date()
 				if (reqTime >= 1000) {
@@ -108,14 +111,75 @@
 				this.modalData.content = res.msg;
 				this.modalData.show = true;
 				if (res.code === 200) {
+					this.modalData.title = '注册成功'
+					this.modalData.redirect = true
 					// 跳转到登录界面
+				} else {
+					this.modalData.title = '注册失败'
+					this.modalData.redirect = false
+				}
+			},
+			/**
+			 * 登录成功或失败后模块的跳转函数
+			 * @param {Object} res 注册接口返回的数据
+			 */
+			modalConfirm() {
+				this.modalData.show = false
+				if (this.modalData.redirect) {
+					console.log('我调整了');
+					uni.redirectTo({
+						url: '/pages/login/login'
+					})
 				}
 			}
 		},
 
+
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
+	.register-page {
+		padding: 0 40rpx;
 
+		&__title {
+			font-size: 22px;
+			font-weight: 500;
+		}
+
+		&__tips {
+			padding: 10px 0;
+			flex-direction: row;
+
+			&--base {
+				color: $u-tips-color;
+				font-size: 14px;
+			}
+
+			&--primary {
+				font-size: 14px;
+			}
+		}
+
+		&__input,
+		&__button {
+			margin: 8px 0;
+		}
+
+		&__footer {
+			position: fixed;
+			width: 750rpx;
+			bottom: 10px;
+
+			&--content {
+				justify-content: center;
+				flex-direction: row;
+			}
+		}
+
+		&__modal-text {
+			font-size: 15px;
+			color: #606266;
+		}
+	}
 </style>

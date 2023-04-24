@@ -30,16 +30,21 @@
 			"enablePullDownRefresh": false
 		}
 
-	}    ,{
-            "path" : "pages/register/register",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	}, {
+		"path": "pages/register/register",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}, {
+		"path": "pages/user/user",
+		"style": {
+			"navigationBarTitleText": "",
+			"enablePullDownRefresh": false
+		}
+
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -70,7 +75,7 @@
 			"selectedIconPath": "static/tabbar/game_active.png",
 			"text": "游戏"
 		}, {
-			"pagePath": "pages/login/login",
+			"pagePath": "pages/user/user",
 			"iconPath": "static/tabbar/personal.png",
 			"selectedIconPath": "static/tabbar/personal_active.png",
 			"text": "我的"

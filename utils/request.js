@@ -20,7 +20,7 @@ function service(options = {}) {
 
 	return new Promise((resolved, rejected) => {
 		options.success = (res) => {
-			if ( ![200,401,304].includes(res.data.code)) {
+			if (![200, 401, 304, 403].includes(res.data.code)) {
 				// 非成功状态码弹窗
 				uni.showToast({
 					icon: 'none',
