@@ -1,6 +1,16 @@
 <template>
 	<view>
-		<u-button type="primary" text="确定" @click="goLogin"></u-button>
+		<u-navbar title="导航栏组件" :bgColor="'rgba(255,255,255,'+opacity+')'" fixed :placeholder="false"
+			:safeAreaInsetTop="true" :border="false">
+			<template slot="center">
+				<image src="../../static/test/hpjy.png" :style="{width: '30px',height: '30px',opacity: opacity}"></image>
+			</template>
+
+		</u-navbar>
+		<view style="height: 2000px;">
+			<image src="../../static/test/hpjy.png" style="width: 750rpx;height: 400rpx;"></image>
+			<u-button type="primary" text="确定" @click="goLogin"></u-button>
+		</view>
 	</view>
 </template>
 
@@ -8,7 +18,14 @@
 	export default {
 		data() {
 			return {
-
+				opacity: 0
+			}
+		},
+		onPageScroll: function(e) { //nvue暂不支持滚动监听，可用bindingx代替
+			if (e.scrollTop < 255) {
+				this.opacity = e.scrollTop / 255
+			} else {
+				this.opacity = 1
 			}
 		},
 		methods: {

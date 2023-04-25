@@ -2,46 +2,41 @@
 	"pages": [{
 		"path": "pages/index/index",
 		"style": {
-			"navigationBarTitleText": "uni-app"
+			"navigationStyle":"custom"
 		}
 	}, {
 		"path": "pages/a/a",
 		"style": {
-			"navigationBarTitleText": "uni-app"
+			"navigationStyle":"custom"
 		}
 	}, {
 		"path": "pages/login/login",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+			"navigationStyle":"custom"
 		}
 
 	}, {
 		"path": "pages/game/game",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+			"navigationStyle":"custom"
 		}
 
 	}, {
 		"path": "pages/kkk/kkk",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+			"navigationStyle":"custom"
 		}
 
 	}, {
 		"path": "pages/register/register",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+			"navigationStyle":"custom"
 		}
 
 	}, {
 		"path": "pages/user/user",
 		"style": {
-			"navigationBarTitleText": "",
-			"enablePullDownRefresh": false
+			"navigationStyle":"custom"
 		}
 
 	}],

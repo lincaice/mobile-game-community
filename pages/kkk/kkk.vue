@@ -3,11 +3,11 @@
 		<text class='title'>我的订阅</text>
 		<view class="my_flex_box">
 			<view class="inner_box">
-				<image src="../../static/test/和平精英.png" mode=""></image>
+				<!-- <image src="../../static/test/和平精英.png" mode=""></image> -->
 				<text>和平精英</text>
 			</view>
 			<view class="inner_box add">
-				<image src="../../static/test/添加.png" mode=""></image>
+				<!-- <image src="../../static/test/添加.png" mode=""></image> -->
 				<text>订阅游戏</text>
 				</view>
 			<view class="inner_box"></view>
@@ -16,11 +16,11 @@
 		<text class='title'>我负责的</text>
 		<view class="my_flex_box">
 			<view class="inner_box">
-				<image src="../../static/test/和平精英.png" mode=""></image>
+				<!-- <image src="../../static/test/和平精英.png" mode=""></image> -->
 				<text>和平精英</text>
 			</view>
 			<view class="inner_box add">
-				<image src="../../static/test/添加.png" mode=""></image>
+				<!-- <image src="../../static/test/添加.png" mode=""></image> -->
 				<text>添加游戏</text>
 				</view>
 			<view class="inner_box"></view>
@@ -29,11 +29,11 @@
 		<text class='title'>推荐游戏</text>
 		<view class="my_flex_box">
 			<view class="inner_box">
-				<image src="../../static/test/和平精英.png" mode=""></image>
+				<!-- <image src="../../static/test/和平精英.png" mode=""></image> -->
 				<text>和平精英</text>
 			</view>
 			<view class="inner_box">
-				<image src="../../static/test/王者荣耀.png" mode=""></image>
+				<!-- <image src="../../static/test/王者荣耀.png" mode=""></image> -->
 				<text>王者荣耀</text>
 			</view>
 			
