@@ -8,22 +8,26 @@
 
 		</u-navbar>
 		<view style="height: 2000px;">
-			<image src="../../static/test/hpjy.png" style="width: 750rpx;height: 400rpx;"></image>
+			<user-header></user-header>
 			<u-button type="primary" text="确定" @click="goLogin"></u-button>
 		</view>
 	</view>
 </template>
 
 <script>
+	import userHeader from '@/components/user/user-header.nvue'
 	export default {
+		components:{
+			userHeader
+		},
 		data() {
 			return {
 				opacity: 0
 			}
 		},
-		onPageScroll: function(e) { //nvue暂不支持滚动监听，可用bindingx代替
-			if (e.scrollTop < 255) {
-				this.opacity = e.scrollTop / 255
+		onPageScroll(e) { //nvue暂不支持滚动监听，可用bindingx代替
+			if (e.scrollTop < 100) {
+				this.opacity = e.scrollTop / 100
 			} else {
 				this.opacity = 1
 			}
