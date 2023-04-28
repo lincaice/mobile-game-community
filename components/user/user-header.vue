@@ -63,7 +63,7 @@
 				align-items: center;
 				padding-left: 8px;
 				color: #fff;
-				font-size: 20px;
+				font-size: 17px;
 				font-weight: bold;
 			}
 		}
